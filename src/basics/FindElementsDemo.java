@@ -1,3 +1,5 @@
+package basics;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,20 +7,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class FindElementsDemo2 {
+public class FindElementsDemo {
 
     public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://scriptinglogic.org/");
+        driver.get("https://stock.amolujagare.com/");
 
-       List<WebElement> wbList =  driver.findElements(By.className("elementor-button-text"));
+       List<WebElement> wbList =  driver.findElements(By.tagName("input"));
         System.out.println("size="+wbList.size());
 
-        System.out.println(wbList.get(0).getText());
-        System.out.println(wbList.get(1).getText());
-
+        wbList.get(0).sendKeys("admin");
+        wbList.get(1).sendKeys("admin");
+        wbList.get(2).click();
 
     }
 

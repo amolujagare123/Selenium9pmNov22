@@ -1,8 +1,12 @@
+package basics;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SeleniumDemo2 {
+import java.util.ArrayList;
+
+public class SeleniumDemo3 {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -10,16 +14,15 @@ public class SeleniumDemo2 {
         //driver.manage().window().maximize();
         driver.get("http://gmail.com");
 
-        driver.switchTo().newWindow(WindowType.WINDOW);
+        driver.switchTo().newWindow(WindowType.TAB);
         driver.get("http://facebook.com");
 
+        System.out.println(driver.getTitle());
 
-        Thread.sleep(4000);
+        ArrayList<String> tabList = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(tabList.get(0));
 
-      //  driver.close(); // close closes the current window
-
-        driver.quit(); // quit closes all the windows opened by the driver
-
+        System.out.println(driver.getTitle());
 
     }
 }

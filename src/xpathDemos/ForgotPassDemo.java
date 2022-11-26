@@ -1,11 +1,11 @@
+package xpathDemos;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.List;
-
-public class FindElementsDemo {
+public class ForgotPassDemo {
 
     public static void main(String[] args) {
 
@@ -13,13 +13,8 @@ public class FindElementsDemo {
         driver.manage().window().maximize();
         driver.get("https://stock.amolujagare.com/");
 
-       List<WebElement> wbList =  driver.findElements(By.tagName("input"));
-        System.out.println("size="+wbList.size());
+        driver.findElement(By.xpath("//a[text()='Forgot your password?']")).click();
 
-        wbList.get(0).sendKeys("admin");
-        wbList.get(1).sendKeys("admin");
-        wbList.get(2).click();
 
     }
-
-    }
+}
