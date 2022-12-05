@@ -1,4 +1,10 @@
 <suite name="Project Name">
+    <groups>
+        <run>
+       <!--     <exclude name="email"/>-->
+            <include name="email"/>
+        </run>
+    </groups>
 
     <test name="module 1">
 

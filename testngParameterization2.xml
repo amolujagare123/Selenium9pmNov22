@@ -1,0 +1,25 @@
+<suite name="Project Name">
+
+    <parameter name="myUrl" value="http://gmail.com"/>
+    <parameter name="myUsername" value="user-222"/>
+    <parameter name="myPassword" value="pass-222"/>
+    <parameter name="myOs" value="mac"/>
+
+
+    <test name="module 1">
+
+        <classes>
+            <class name="TestNGDemos.Demo3.ClassOne"/>
+             <class name="TestNGDemos.Demo3.ClassTwo"/>
+        </classes>
+
+    </test>
+
+    <test name="module 2">
+        <classes>
+            <class name="TestNGDemos.Demo3.ClassThree"/>
+        </classes>
+    </test>
+
+
+</suite>
