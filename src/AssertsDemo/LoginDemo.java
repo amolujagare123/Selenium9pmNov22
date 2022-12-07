@@ -142,12 +142,40 @@ public class LoginDemo {
 
         String expected = "red";
 
-        expected = Color.fromString(expected).asRgba();
+        expected = Color.fromString(expected).asRgba(); // string to rgba
 
         String actual = "";
         try {
             actual  = driver.findElement(By.xpath("//label[@for='login-username' and @class='error']")).getCssValue("color");
 
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        System.out.println("expected="+expected);
+        System.out.println("actual="+actual);
+
+        Assert.assertEquals(actual,expected,"incorrect color");
+    }
+
+
+    @Test
+    public void checkLoginButtonColor() {
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://stock.amolujagare.com/");
+
+        String expected = "#2069B4"; // blue shed
+        String actual="";
+
+        try {
+            String btnColorRgba = driver.findElement(By.xpath("//input[@value='LOG IN']")).getCssValue("background-color");
+
+            actual = Color.fromString(btnColorRgba).asHex().toUpperCase();
+            // string to rgba
         }
         catch (Exception e)
         {

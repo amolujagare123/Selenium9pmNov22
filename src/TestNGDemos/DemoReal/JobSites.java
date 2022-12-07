@@ -1,7 +1,9 @@
 package TestNGDemos.DemoReal;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -26,6 +28,8 @@ public class JobSites {
     public void naukri()
     {
         driver.get("http://naukri.com");
+
+        Assert.assertEquals("my naukri",driver.getTitle(),"Wrong page");
     }
 
     @Test
