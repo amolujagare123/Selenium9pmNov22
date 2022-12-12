@@ -13,6 +13,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
+import static ReportsDemo.ExtentReportDemo.util.ForExtentReport.getScreenshot;
+
 public class LoginExtentReport {
 
     ExtentReports extent;
@@ -39,8 +43,7 @@ public class LoginExtentReport {
     }
 
     @Test
-    public void loginTest1()
-    {
+    public void loginTest1() throws IOException {
         ExtentTest test = extent.createTest("valid login Test");
 
         WebDriver driver = new ChromeDriver();
@@ -80,6 +83,7 @@ public class LoginExtentReport {
         catch (AssertionError e)
         {
             test.fail("This test is failed:"+e.getMessage());
+            test.addScreenCaptureFromPath("./screenshots/"+getScreenshot(driver));
         }
 
     }
