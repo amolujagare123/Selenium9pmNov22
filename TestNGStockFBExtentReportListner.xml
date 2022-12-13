@@ -1,0 +1,15 @@
+<suite name="all sites">
+
+    <listeners>
+        <listener class-name="ReportsDemo.ExtentReportDemo.util.ExtentReportListeners"/>
+    </listeners>
+
+
+    <test name="academy sites">
+        <classes>
+            <class name="TestNGDemos.StockManagement.LoginTestNG"/>
+            <class name="TestNGDemos.StockManagement.Facebook"/>
+        </classes>
+    </test>
+
+</suite>

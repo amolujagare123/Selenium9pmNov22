@@ -1,26 +1,15 @@
 package TestNGDemos.DemoReal;
 
+import ReportsDemo.ExtentReportDemo.util.InitExitBrowser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class SocialSites {
+public class SocialSites  extends InitExitBrowser {
 
-    WebDriver driver;
-    @BeforeClass // this method will run before first test method of the class
-    public void openBrowser()
-    {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
 
-    @AfterClass  // this method will run after last test method of the class
-    public void closeBrowser() throws InterruptedException {
-        Thread.sleep(4000);
-        driver.close();
-    }
 
     @Test (priority = 4)
     public void facebook()
