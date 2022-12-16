@@ -1,9 +1,11 @@
 package DataProvider;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,10 +14,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class LoginDataProviderEx {
+public class LoginDataProviderXlsx {
 
     @Test (dataProvider = "getData")
     public void loginTest(String username,String password)
@@ -39,27 +40,26 @@ public class LoginDataProviderEx {
     public Object[][] getData() throws IOException {
 
         // 1. read the file
-        FileInputStream fileInputStream = new FileInputStream("Data/myData.xls");
+        FileInputStream fileInputStream = new FileInputStream("Data/myDataX.xlsx");
 
         // 2. convert this file object into a workbook object
-        HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
+        XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
 
         // 3. identify the sheet where the data is
-        HSSFSheet sheet = workbook.getSheet("Sheet1");
+        XSSFSheet sheet = workbook.getSheet("Sheet2");
 
         // 4. count the active row
         int rowCount = sheet.getPhysicalNumberOfRows(); // 5
 
         //int colCount = sheet.getRow(0).getLastCellNum();
 
-        Object[][] data = new Object[rowCount][2];
+        Object[][] data = new Object[rowCount-1][2];
 
         for (int i=0;i<rowCount-1;i++)
         {
-            HSSFRow row = sheet.getRow(i);
+            XSSFRow row = sheet.getRow(i+1);
 
            // HSSFCell cell = row.getCell(0);
-
             data[i][0] = row.getCell(0).toString();
             data[i][1] = row.getCell(1).toString();
 
@@ -67,17 +67,6 @@ public class LoginDataProviderEx {
 
         return data;
 
-        /*data[0][0] = "admin";
-        data[0][1] = "admin";
-
-        data[1][0] = "invalid-1";
-        data[1][1] = "invalid-1";
-
-        data[2][0] = "";
-        data[2][1] = "";
-
-        data[3][0] = "invalid-3";
-        data[3][1] = "invalid-3";*/
 
 
     }
